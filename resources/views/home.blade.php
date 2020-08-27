@@ -15,7 +15,7 @@
                     <thead>
                         <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Name</th>
+                        <th scope="col">Movie Name</th>
                         <th scope="col">Cinema</th>
                         <th scope="col">Show time</th>
                        
