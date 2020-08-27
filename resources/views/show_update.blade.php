@@ -16,7 +16,7 @@
                             <!-- Default input name -->
                             <label for="defaultFormNameModalEx">Movie Name</label>
                             <select type="text" id="defaultFormNameModalEx" class="form-control form-control-sm @error('movie_id') is-invalid @enderror" name="movie_id" value="{{$show->movie_id}}" required>
-                            <option value="{{$show->movies->id}}">{{$show->movies->name}}</option>
+                            <option value="{{$show->id}}">{{$show->name}}</option>
                                 @if(count($movie)>0)
                                     @foreach($movie as $move)
                                         <option value="{{$move->id}}">{{$move->name}}</option>
@@ -32,7 +32,7 @@
 
                             <label for="defaultFormNameModalEx">Cinema</label>
                             <select type="text" id="defaultFormNameModalEx" name="cinema_id" class="form-control form-control-sm @error('cinema_id')  is-invalid @enderror" value="{{$show->cinema_id}}" required>
-                                <option value="{{$show->name}}">{{$show->name}}</option>
+                            <option value="$show->cinema->first()->id">{{$show->cinema->first()->name}}</option>
                                 @if(count($cinema)>0)
                                     @foreach($cinema as $move)
                                         <option value="{{$move->id}}">{{$move->name}}</option>
