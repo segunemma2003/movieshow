@@ -83,8 +83,9 @@ class CinemaController extends Controller
     {
         $movie=$this->movierepository->all();
        $cinema=$this->cinemarepository->all();
-       $show=$this->cinemarepository->findByIdAndCinema($id,$my);
-       return view('show_update',compact('show','movie','cinema'));
+       $show=$this->cinemarepository->findByIdAndCinema($id,$my)['movies'];
+       $single_cinema=$this->cinemarepository->findByIdAndCinema($id,$my)['cinema'];
+       return view('show_update',compact('show','movie','cinema','single_cinema'));
     }
     public function updateShow(CinemaMovieRequest $request,$id,$myid)
     {
@@ -95,9 +96,10 @@ class CinemaController extends Controller
     }
     public function deleteShow(CinemaMovieRequest $request,$id,$myid)
     {
-        if($this->cinemarepository->deleteShowTime($id,$myid))
-        {
-            return redirect('/');
-        }
+        dd($id);
+        // if($this->cinemarepository->deleteShowTime($id,$myid))
+        // {
+        //     return redirect('/');
+        // }
     }
 }

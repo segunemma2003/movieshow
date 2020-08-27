@@ -11,7 +11,7 @@ interface CinemaRepositoryInterface
     public function update($id,$data);
     public function delete($id);
     public function showTime();
-    public function updateShowTime($id,$data);
+    public function updateShowTime($id,$myid,$data);
     public function deleteShowTime($id,$myid);
     public function addShowTime($data);
     public function findByIdAndCinema($id,$my);

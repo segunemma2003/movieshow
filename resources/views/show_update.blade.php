@@ -32,7 +32,7 @@
 
                             <label for="defaultFormNameModalEx">Cinema</label>
                             <select type="text" id="defaultFormNameModalEx" name="cinema_id" class="form-control form-control-sm @error('cinema_id')  is-invalid @enderror" value="{{$show->cinema_id}}" required>
-                            <option value="$show->cinema->first()->id">{{$show->cinema->first()->name}}</option>
+                            <option value="{{$single_cinema->id}}">{{$single_cinema->name}}</option>
                                 @if(count($cinema)>0)
                                     @foreach($cinema as $move)
                                         <option value="{{$move->id}}">{{$move->name}}</option>

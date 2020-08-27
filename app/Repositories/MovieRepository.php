@@ -34,6 +34,7 @@ class MovieRepository implements MovieRepositoryInterface
     public function delete($id)
     {
         $movie=Movie::whereId($id)->firstorFail();
+        $movie->cinema()->detach($id);
         if($movie->delete()){
             return true;
         }else{
