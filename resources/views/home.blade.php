@@ -42,8 +42,8 @@
                                 @foreach($show->movies as $move)
                             <tr>
                                 <td>{{$loop->index+1}}</td>
-                                <td>{{$show->name}}</td>
                                 <td>{{$move->name}}</td>
+                                <td>{{$show->name}}</td>
                                 <td>{{$move->pivot->time}}</td>
                                 <td>{{$move->pivot->date}}</td>
                                 <!-- <td>{{$move->created_at->diffForHumans()}}</td> -->
