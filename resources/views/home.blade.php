@@ -42,7 +42,7 @@
                                 @foreach($show->movies as $move)
                             <tr>
                                 <td>{{$move->pivot->id}}</td>
-                                <td>{{$loop->index+1}}</td>
+                                <td>{{$loop->index}}</td>
                                 <td>{{$move->name}}</td>
                                 <td>{{$show->name}}</td>
                                 <td>{{$move->pivot->time}}</td>
