@@ -9,7 +9,7 @@ class Movie extends Model
     protected $guarded=[];
     public function cinema()
     {
-        return $this->belongsToMany('App\Cinema','cinemas_movies','movie_id','cinema_id')->withPivot(['time','date','id']);
+        return $this->belongsToMany('App\Cinema','cinemas_movies','movie_id','cinema_id')->withPivot('time','date','id')->withTimestamps();
     }
 
     public function user()

@@ -26,6 +26,7 @@ class CinemaRepository implements CinemaRepositoryInterface
         $cinema=Cinema::whereId($id)->firstorFail();
         $cinema->user_id=Auth::user()->id;
         $cinema->name=$data->name;
+        $cinema->venue=$data->venue;
         if($cinema->save()){
             return true;
         }else{
@@ -46,15 +47,15 @@ class CinemaRepository implements CinemaRepositoryInterface
     {
         $cinema=Cinema::whereId($myid)->firstorFail();
         
-        $mydata=$cinema->movies()->wherePivot('movie_id',$id)
+        $mydata=$cinema->movies()->wherePivot('id',$id)
         
-        ->updateExistingPivot($id,[
+        ->updateExistingPivot($data->movie_id,[
             'time'=>$data->time,
             'date'=>$data->date,
             'movie_id'=>$data->movie_id,
             'cinema_id'=>$data->cinema_id,
             'user_id'=>Auth::user()->id
-        ],false);
+        ]);
        
        if($mydata){
         return true;
@@ -78,15 +79,17 @@ class CinemaRepository implements CinemaRepositoryInterface
             return true;
     }
     public function deleteShowTime($id,$myid){
+
         $cinema=Cinema::whereId($myid)->firstorFail();
-        if($cinema->movies()->wherePivot('id',$id)->detach())
+        if($cinema->movies()->newPivotStatement()->where('id',$id)->delete())
         {
             return true;
         }
         return  false;
     }
     public function showTime(){
-        return Cinema::whereHas('movies')->with('movies')->get();
+        $cinema=Cinema::whereHas('movies')->with('movies')->get();
+        return $cinema;
     }
     public function findById($id)
     {
@@ -99,10 +102,12 @@ class CinemaRepository implements CinemaRepositoryInterface
     public function findByIdAndCinema($id,$myid)
     {
        
-        $cinema=Cinema::whereId($myid)->firstOrFail();
+        $cinemas=Cinema::whereId($myid)->firstOrFail();
+        $cinema=$cinemas->movies()->wherePivot('id',$id)->first();
+       
         return [
-            'movies'=>$cinema->movies()->whereMovie_id($id)->firstOrFail(),
-            'cinema'=>$cinema
+            'movies'=>$cinema,
+            'cinema'=>$cinemas
         ];
     }
     public function findByCinema($name)

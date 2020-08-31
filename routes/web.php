@@ -40,7 +40,7 @@ Route::group(['middleware'=>'auth'],function(){
         Route::post('/create','CinemaController@addShow');
         Route::get('/edit/{id}/{my}','CinemaController@showEditShow')->name('show.edit');
         Route::post('/edit/{id}/{my}','CinemaController@updateShow');
-        Route::get('/delete/{id}/{my}','CinemaController@deleteShow')->name('show.delete');
+        Route::get('/delete/{id}/{my}','CinemaController@deleteShows')->name('show.delete');
     });
     
     

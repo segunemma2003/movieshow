@@ -8,7 +8,7 @@ class Cinema extends Model
 {
     public function movies()
     {
-        return $this->belongsToMany('App\Movie','cinemas_movies','cinema_id','movie_id')->withPivot('time','date');
+        return $this->belongsToMany('App\Movie','cinemas_movies','cinema_id','movie_id')->withPivot('id','time','date')->withTimestamps();
     }
     public function user()
     {

@@ -34,7 +34,6 @@ class CinemaController extends Controller
     public function showIndex()
     {
         $shows=$this->cinemarepository->showTime();
-  
         return view('home',compact('shows'));
     }
     public function showEditCinema($id)
@@ -94,12 +93,12 @@ class CinemaController extends Controller
             return redirect()->route('show');
         }
     }
-    public function deleteShow(CinemaMovieRequest $request,$id,$myid)
+    public function deleteShows($id,$myid)
     {
-        dd($id);
-        // if($this->cinemarepository->deleteShowTime($id,$myid))
-        // {
-        //     return redirect('/');
-        // }
+        
+        if($this->cinemarepository->deleteShowTime($id,$myid))
+        {
+            return redirect()->route('show');
+        }
     }
 }

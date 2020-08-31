@@ -14,7 +14,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                        <th scope="col">#</th>
+                        
                         <th scope="col">Movie Name</th>
                         <th scope="col">Cinema</th>
                         <th scope="col">Show time</th>
@@ -33,7 +33,7 @@
                     No Movies Yet
                     </tr>
                     @else
-                        @foreach($shows as $show)
+                        @foreach($shows as $s=>$show)
                             @if(count($show->movies) < 1)
                             <tr>
                             No show
@@ -41,14 +41,13 @@
                             @else
                                 @foreach($show->movies as $move)
                             <tr>
-                                <td>{{$move->pivot->id}}</td>
-                                <td>{{$loop->index}}</td>
+                              
                                 <td>{{$move->name}}</td>
                                 <td>{{$show->name}}</td>
                                 <td>{{$move->pivot->time}}</td>
                                 <td>{{$move->pivot->date}}</td>
                                 <!-- <td>{{$move->created_at->diffForHumans()}}</td> -->
-                                <td><a href="{{route('show.edit',[$move->id,$show->id])}}" class="btn btn-primary">Edit</a>||<a href="{{route('show.delete',[$move->id,$show->id])}}" class="btn btn-danger">Delete</a></td>
+                                <td><a href="{{route('show.edit',[$move->pivot->id,$show->id])}}" class="btn btn-primary">Edit</a>||<a href="{{route('show.delete',[$move->pivot->id,$show->id])}}" class="btn btn-danger">Delete</a></td>
                             </tr>
                                 @endforeach
                             @endif    
