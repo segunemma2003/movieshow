@@ -68,7 +68,7 @@ class CinemaRepository implements CinemaRepositoryInterface
     {
         $cinema=Cinema::whereId($data->cinema_id)->firstorFail();
        
-        $mydata=$cinema->movies()->sync([$data->movie_id=>[
+        $mydata=$cinema->movies()->attach([$data->movie_id,[
             
             'time'=>$data->time,
             'date'=>$data->date,
