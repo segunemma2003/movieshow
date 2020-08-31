@@ -79,7 +79,7 @@ class CinemaRepository implements CinemaRepositoryInterface
     }
     public function deleteShowTime($id,$myid){
         $cinema=Cinema::whereId($myid)->firstorFail();
-        if($cinema->movies()->detach($id))
+        if($cinema->movies()->wherePivot('id',$id)->detach())
         {
             return true;
         }
