@@ -68,12 +68,12 @@ class CinemaRepository implements CinemaRepositoryInterface
     {
         $cinema=Cinema::whereId($data->cinema_id)->firstorFail();
        
-        $mydata=$cinema->movies()->attach([$data->movie_id,[
+        $mydata=$cinema->movies()->attach($data->movie_id,[
             
             'time'=>$data->time,
             'date'=>$data->date,
             'user_id'=>Auth::user()->id    
-        ]]);
+        ]);
       
             return true;
     }
