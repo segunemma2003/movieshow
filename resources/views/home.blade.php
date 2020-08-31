@@ -40,16 +40,15 @@
                             </tr>
                             @else
                                 @foreach($show->movies as $move)
-
                             <tr>
-                                
+                                <td>{{$move->pivot->id}}</td>
                                 <td>{{$loop->index+1}}</td>
                                 <td>{{$move->name}}</td>
                                 <td>{{$show->name}}</td>
                                 <td>{{$move->pivot->time}}</td>
                                 <td>{{$move->pivot->date}}</td>
                                 <!-- <td>{{$move->created_at->diffForHumans()}}</td> -->
-                                <td><a href="{{route('show.edit',[$move->pivot->id,$show->id])}}" class="btn btn-primary">Edit</a>||<a href="{{route('show.delete',[$move->id,$show->id])}}" class="btn btn-danger">Delete</a></td>
+                                <td><a href="{{route('show.edit',[$move->id,$show->id])}}" class="btn btn-primary">Edit</a>||<a href="{{route('show.delete',[$move->id,$show->id])}}" class="btn btn-danger">Delete</a></td>
                             </tr>
                                 @endforeach
                             @endif    
