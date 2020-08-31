@@ -42,7 +42,7 @@
                                 @foreach($show->movies as $move)
 
                             <tr>
-                                <td>{{count($show->movies)}}</td>
+                                
                                 <td>{{$loop->index+1}}</td>
                                 <td>{{$move->name}}</td>
                                 <td>{{$show->name}}</td>
